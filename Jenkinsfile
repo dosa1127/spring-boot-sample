@@ -6,11 +6,16 @@ pipeline {
         checkout scm
       }
     }
+    stage('test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
   }
   post {
     always {
       echo 'I will always say Hello again!'
-      sh "docker-compose run clean"
+      sh 'docker-compose run clean'
 
     }
 
